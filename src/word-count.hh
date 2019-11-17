@@ -1,9 +1,10 @@
+#pragma once
 #include <string>
 
 class WordCount {
 private:
-    const std::string m_word;
-    const int         m_count;
+    std::string m_word;
+    int         m_count;
 public:
     WordCount(const std::string& word, const int count)
     : m_word(word), m_count(count) {

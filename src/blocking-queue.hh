@@ -2,7 +2,6 @@
 // Credits: https://stackoverflow.com/a/12805690
 //
 #pragma once
-
 #include <condition_variable>
 #include <mutex>
 #include <queue>

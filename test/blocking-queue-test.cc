@@ -1,6 +1,7 @@
-#include <algorithm>
+#include <algorithm> // sort
 #include <cassert>
 #include <chrono>
+#include <iostream>
 #include <thread>
 #include <vector>
 #include "../src/blocking-queue.hh"
@@ -11,6 +12,7 @@ void testSimple() {
     myQueue.push(input);
     const auto result = myQueue.pop();
     assert(result.compare(input) == 0);
+    std::cout << "ok " << __FUNCTION__ << std::endl;
 }
 
 void testBlocking() {
@@ -22,6 +24,7 @@ void testBlocking() {
     const auto result = myQueue.pop(); // Main thread blocks until result is available
     assert(result == 5);
     thread.join();
+    std::cout << "ok " << __FUNCTION__ << std::endl;
 }
 
 void push(BlockingQueue<int>& queue, const int threadId, const int numberOfItems) {
@@ -57,6 +60,7 @@ void testConcurrently() {
     for (int i = 0; i < numberOfThreads * itemsPerThread; i++) {
         assert(result[i] == i);
     }
+    std::cout << "ok " << __FUNCTION__ << std::endl;
 }
 
 int main(int argc, char** argv) {

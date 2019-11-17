@@ -1,13 +1,16 @@
+#pragma once
+#include <map>
 #include <vector>
-#include "word-count.hh"
 #include "blocking-queue.hh"
+#include "word-count-list.hh"
+#include "word-count-map.hh"
 
 typedef BlockingQueue<std::string> WordQueue;
-typedef std::vector<WordCount> WordCountList;
 
 class WordCounter {
-    const WordQueue& m_wordQueue;
+    WordQueue& m_wordQueue;
+    WordCountMap wordCounts;
 public:
-    WordCounter(const WordQueue& wordQueue);
+    WordCounter(WordQueue& wordQueue);
     WordCountList count();
 };
