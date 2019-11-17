@@ -5,8 +5,9 @@
 #include <thread>
 #include <vector>
 #include "../src/blocking-queue.hh"
+#include "tests.hh"
 
-void testSimple() {
+void testBlockingQueueSimple() {
     BlockingQueue<std::string> myQueue;
     const auto input = "Hello world";
     myQueue.push(input);
@@ -15,7 +16,7 @@ void testSimple() {
     std::cout << "ok " << __FUNCTION__ << std::endl;
 }
 
-void testBlocking() {
+void testBlockingQueueWaiting() {
     BlockingQueue<int> myQueue;
     auto thread = std::thread([&myQueue]{
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
@@ -34,7 +35,7 @@ void push(BlockingQueue<int>& queue, const int threadId, const int numberOfItems
     }
 }
 
-void testConcurrently() {
+void testBlockingQueueConcurrently() {
     std::srand(std::time(nullptr)); // Use current time as seed for random generator
 
     BlockingQueue<int> myQueue;
@@ -61,11 +62,4 @@ void testConcurrently() {
         assert(result[i] == i);
     }
     std::cout << "ok " << __FUNCTION__ << std::endl;
-}
-
-int main(int argc, char** argv) {
-    testSimple();
-    testBlocking();
-    testConcurrently();
-    return 0;
 }

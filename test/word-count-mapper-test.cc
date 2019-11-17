@@ -1,6 +1,7 @@
 #include <cassert>
 #include <iostream>
 #include "../src/word-count-mapper.hh"
+#include "tests.hh"
 
 void mapAndVerify(const WordCountMap& map, const WordCountList& refList) {
     const auto list = WordCountMapper()(map);
@@ -36,12 +37,3 @@ void testWordCountMapperUnicode() {
     mapAndVerify(map, list);
     std::cout << "ok " << __FUNCTION__ << std::endl;
 }
-
-int main(int argc, char** argv) {
-    testWordCountMapperEmpty();
-    testWordCountMapperSimple();
-    testWordCountMapperSecondary();
-    // testWordCountMapperUnicode(); // Does not work with MinGW, try with other compiler
-    return 0;
-}
-

@@ -1,14 +1,15 @@
-word-counter-test: word-counter-test.o word-counter.o word-count-mapper.o constants.o
-	c++ -o word-counter-test.exe test/word-counter-test.o src/word-counter.o src/word-count-mapper.o src/constants.o
+objects = src/constants.o src/word-count-mapper.o src/word-counter.o
+test_objects = test/tests.o test/blocking-queue-test.o test/word-count-mapper-test.o test/word-counter-test.o
 
-word-counter-test.o: test/word-counter-test.cc src/word-counter.hh src/word-count-mapper.hh src/constants.hh
-	c++ -o test/word-counter-test.o -c test/word-counter-test.cc
+main: $(objects)
+	c++ -o main.exe $(objects)
 
-word-counter.o: src/word-counter.cc src/word-counter.hh src/word-count-mapper.hh src/constants.hh
-	c++ -o src/word-counter.o -c src/word-counter.cc
+test: $(test_objects) $(objects)
+	c++ -o tests.exe $(test_objects) $(objects)
 
-word-count-mapper.o: src/word-count-mapper.cc src/word-count-mapper.hh src/constants.hh
-	c++ -o src/word-count-mapper.o -c src/word-count-mapper.cc
+$(objects): src/*.hh
+$(test_objects): src/*.hh test/tests.hh
 
-constants.o: src/constants.cc src/constants.hh
-	c++ -o src/constants.o -c src/constants.cc
+.PHONY: clean
+clean:
+	rm $(objects)

@@ -3,7 +3,7 @@
 #include "../src/constants.hh"
 #include "../src/word-counter.hh"
 #include "../src/blocking-queue.hh"
-
+#include "tests.hh"
 
 WordQueue* createWordQueue(std::initializer_list<std::string> words) {
     auto* wordQueue = new WordQueue();
@@ -39,11 +39,4 @@ void testWordCounterMultiple() {
     auto refList = WordCountList({ WordCount("bar", 2), WordCount("foo", 1) });
     countAndVerify(*wordQueuePtr, refList);
     std::cout << "ok " << __FUNCTION__ << std::endl;
-}
-
-int main(int argc, char** argv) {
-    testWordCounterEmpty();
-    testWordCounterSingle();
-    testWordCounterMultiple();
-    return 0;
 }
