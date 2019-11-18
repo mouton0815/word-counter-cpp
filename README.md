@@ -34,6 +34,10 @@ and added some unit tests.
 I was not able to make unicode-aware regular expressions working, so the C++ version splits
 correctly on ASCII texts only.
 I may do a later attempt using the [ICU library](http://site.icu-project.org/design/cpp).
+* Lots of hassle with `<filesystem>`, which is available since C++ 17. Ubuntu 18.04.3 LTS comes with GCC 7.4.0,
+which supports C++ 17, but _not_ `<filesystem>`. To use it, one has to include `<experimental/filesystem>`
+and link with `-lstdc++fs`. But then class `directory_entry` does not support the standard method
+`is_regular_file()` ... aargh.
 
 # Building
 ```

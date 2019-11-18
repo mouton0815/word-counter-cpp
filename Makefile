@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -pthread
-LDFLAGS = -Wall -pthread
+LDFLAGS = -Wall -pthread -lstdc++fs
 
 objects = \
     src/constants.o \
@@ -28,7 +28,7 @@ main: $(main_objects)
 	$(CXX) $(LDFLAGS) -o main.exe $(main_objects)
 
 test: $(test_objects) $(objects)
-	$(CXX) $(LDFLAGS) -o test.exe $(test_objects) $(objects)
+	$(CXX) -o test.exe $(test_objects) $(objects) $(LDFLAGS)
 
 $(main_objects): src/*.hh
 $(test_objects): src/*.hh test/*.hh
