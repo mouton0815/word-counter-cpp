@@ -31,5 +31,8 @@ int main(int argc, char** argv) {
     testWorkerEmpty();
     testWorkerNormal();
 
+    testWorkerPoolNoInput();
+    testWorkerPoolWithInput();
+
     return 0;
 }

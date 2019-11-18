@@ -27,3 +27,6 @@ void testFileReader();
 
 void testWorkerEmpty();
 void testWorkerNormal();
+
+void testWorkerPoolNoInput();
+void testWorkerPoolWithInput();

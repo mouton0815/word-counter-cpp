@@ -10,7 +10,7 @@ void Worker::operator()() {
     std::cout << "Worker " << m_id << " starts" << std::endl;
     std::string path;
     while ((path = m_pathQueue.pop()) != STREAM_END) {
-        std::cout << "Worker " << m_id << " takes "  << path << std::endl;
+        std::cout << "Worker " << m_id << " reads "  << path << std::endl;
         m_fileReader.read(path);
     }
     // Inform other workers that pathQueue is empty

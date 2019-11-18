@@ -9,7 +9,8 @@ objects = \
     src/tokenizer.o \
     src/path-collector.o \
     src/file-reader-impl.o \
-    src/worker.o
+    src/worker.o \
+    src/worker-pool.o
 
 main_objects = $(objects) \
     src/main.o
@@ -22,7 +23,8 @@ test_objects = \
     test/word-counter-test.o \
     test/path-collector-test.o \
     test/file-reader-test.o \
-    test/worker-test.o
+    test/worker-test.o \
+    test/worker-pool-test.o
 
 main: $(main_objects)
 	$(CXX) -o main.exe $(main_objects) $(LDFLAGS)
