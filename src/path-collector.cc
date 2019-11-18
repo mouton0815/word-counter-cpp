@@ -1,6 +1,7 @@
 #include <experimental/filesystem> // TODO: Upgrade to GCC 8 and remove "experimental" (+ make requirements clear in README.md)
 #include "constants.hh"
 #include "path-collector.hh"
+#include <iostream> // TODO: Remove
 
 namespace fs = std::experimental::filesystem;
 
@@ -20,7 +21,7 @@ void PathCollector::operator()() {
     const fs::path rootPath(m_rootPath);
     for(auto iter = fs::recursive_directory_iterator(rootPath); iter != fs::recursive_directory_iterator(); ++iter) {
         // TODO: Check for iter->is_regular_file(), which is not supported by the experimental fs implementation
-        const auto filename = iter->path().filename().string();
+        const auto filename = iter->path();
         if (hasSuffix(filename, ".txt")) {
             m_pathQueue.push(filename);
         }
