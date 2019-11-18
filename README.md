@@ -6,6 +6,6 @@ But since all old stuff remains, C++ is much harder to learn than other language
 I had to copy [this one](https://stackoverflow.com/a/12805690) from StackOverflow
 and added some unit tests.
 * Unicode support in C++ is just terrible (see [here](https://stackoverflow.com/a/17106065)).
-I was not able to make unicode-aware regular expressions and string comparison working, so the
-C++ version splits and sorts correctly for ASCII texts only.
+I was not able to make unicode-aware regular expressions working, so the C++ version splits
+correctly on ASCII texts only.
 I may do a later attempt using the [ICU library](http://site.icu-project.org/design/cpp).

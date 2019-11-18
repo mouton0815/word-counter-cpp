@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
     testWordCountMapperEmpty();
     testWordCountMapperSimple();
     testWordCountMapperSecondary();
-    // testWordCountMapperUnicode(); // Broken, need to try ICU
+    testWordCountMapperUnicode();
 
     testWordCounterEmpty();
     testWordCounterSingle();
