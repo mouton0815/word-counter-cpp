@@ -2,7 +2,7 @@
 #include "constants.hh"
 #include <iostream> // TODO: Replace by logger
 
-Worker::Worker(const int id, PathQueue& pathQueue, FileReader& fileReader)
+Worker::Worker(const int id, StringQueue& pathQueue, FileReader& fileReader)
     : m_id(id), m_pathQueue(pathQueue), m_fileReader(fileReader) {
 }
 
