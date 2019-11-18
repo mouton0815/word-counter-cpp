@@ -17,11 +17,9 @@ void testTokenizerMulti();
 void testTokenizerSpecialSigns();
 void testTokenizerUnderscore();
 void testTokenizerUnicodeGerman();
-/*
 void testTokenizerUnicodeRussian();
 void testTokenizerUnicodeCzech();
 void testTokenizerIgnoreNumbers();
-*/
 
 void testWorkerEmpty();
 void testWorkerNormal();

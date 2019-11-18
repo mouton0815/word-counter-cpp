@@ -55,3 +55,16 @@ void testTokenizerUnicodeGerman() {
     tokenizeAndVerify("Fö bär baß", { "fö", "bär", "baß" });
     std::cout << "ok " << __FUNCTION__ << std::endl;
 }
+
+void testTokenizerUnicodeRussian() {
+    tokenizeAndVerify("Раз, два три!", { "раз", "два", "три" });
+}
+
+void testTokenizerUnicodeCzech() {
+    tokenizeAndVerify("Jedna, dva tři čtyři pět!", { "jedna", "dva", "tři", "čtyři", "pět" });
+}
+
+void testTokenizerIgnoreNumbers() {
+    tokenizeAndVerify("foo 123 bar456baz", { "foo", "bar", "baz" });
+}
+
