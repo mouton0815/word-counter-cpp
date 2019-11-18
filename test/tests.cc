@@ -14,6 +14,18 @@ int main(int argc, char** argv) {
     testWordCounterSingle();
     testWordCounterMultiple();
 
+    testTokenizerEmpty();
+    testTokenizerTrim();
+    testTokenizerMulti();
+    testTokenizerSpecialSigns();
+    testTokenizerUnderscore();
+    testTokenizerUnicodeGerman();
+    /*
+    testTokenizerUnicodeRussian();
+    testTokenizerUnicodeCzech();
+    testTokenizerIgnoreNumbers();
+    */
+
     testWorkerEmpty();
     testWorkerNormal();
 
