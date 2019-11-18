@@ -21,5 +21,7 @@ void testTokenizerUnicodeRussian();
 void testTokenizerUnicodeCzech();
 void testTokenizerIgnoreNumbers();
 
+void testFileReader();
+
 void testWorkerEmpty();
 void testWorkerNormal();

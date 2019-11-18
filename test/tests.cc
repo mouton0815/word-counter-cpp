@@ -24,6 +24,8 @@ int main(int argc, char** argv) {
     // testTokenizerUnicodeCzech();
     testTokenizerIgnoreNumbers();
 
+    testFileReader();
+
     testWorkerEmpty();
     testWorkerNormal();
 

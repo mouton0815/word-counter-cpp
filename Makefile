@@ -7,8 +7,11 @@ objects = \
     src/word-count-mapper.o \
     src/word-counter.o \
     src/tokenizer.o \
-    src/file-reader.o \
+    src/file-reader-impl.o \
     src/worker.o
+
+main_objects = $(objects) \
+    src/main.o
 
 test_objects = \
     test/tests.o \
@@ -16,17 +19,18 @@ test_objects = \
     test/word-count-mapper-test.o \
     test/tokenizer-test.o \
     test/word-counter-test.o \
+    test/file-reader-test.o \
     test/worker-test.o
 
-main: $(objects)
-	$(CXX) $(LDFLAGS) -o main.exe $(objects)
+main: $(main_objects)
+	$(CXX) $(LDFLAGS) -o main.exe $(main_objects)
 
-tests: $(test_objects) $(objects)
-	$(CXX) $(LDFLAGS) -o tests.exe $(test_objects) $(objects)
+test: $(test_objects) $(objects)
+	$(CXX) $(LDFLAGS) -o test.exe $(test_objects) $(objects)
 
-$(objects): src/*.hh
+$(main_objects): src/*.hh
 $(test_objects): src/*.hh test/*.hh
 
 .PHONY: clean
 clean:
-	rm $(test_objects) $(objects) tests.exe
+	rm $(main_objects) $(test_objects) main.exe test.exe
