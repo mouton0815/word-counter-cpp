@@ -3,6 +3,6 @@
 
 class FileReader {
 public:
-    void read(const std::string& path);
-    void close();
+    virtual void read(const std::string& path);
+    virtual void close();
 };
