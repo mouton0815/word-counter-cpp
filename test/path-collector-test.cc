@@ -17,7 +17,7 @@ void testPathCollector() {
     }
     std::sort(list.begin(), list.end());
 
-    const auto refList = { "file1.txt", "file2.txt", "file3.txt" };
+    const auto refList = { "./data/file1.txt", "./data/file2.txt", "./data/subdir/file3.txt" };
     // for (const auto& x: list) std::cout << "-----> " << x << std::endl;
     // for (const auto& x: refList) std::cout << "--~--> " << x << std::endl;
     assert(std::equal(list.begin(), list.end(), refList.begin(), refList.end()));
