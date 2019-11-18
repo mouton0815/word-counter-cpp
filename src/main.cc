@@ -8,14 +8,15 @@
 #include "file-reader-impl.hh"
 #include "string-queue.hh"
 #include "word-counter.hh"
-#include "worker.hh"
+#include "worker-pool.hh"
 
 using namespace std;
 
 int main(int argc, char** argv) {
-    const auto rootPath = "./data";
+    const auto rootPath = "./data"; // TODO: Take from command line
 
-    const auto numWorkers = 1;
+    // TODO: Auto-detect number of workers
+    const auto numWorkers = 4;
     std::cout << "#workers: " << numWorkers << std::endl;
 
     StringQueue pathQueue;
@@ -23,14 +24,11 @@ int main(int argc, char** argv) {
 
     Tokenizer tokenizer(wordQueue);
     FileReaderImpl fileReader(tokenizer);
-    Worker worker(1, pathQueue, fileReader);
-    std::thread workerThread([&]{
-        worker();
-        fileReader.close(); // TODO: Will be done by the pool
-    });
+    WorkerPool workerPool(numWorkers, pathQueue, fileReader);
+    std::thread poolThread(workerPool);
 
     PathCollector collector(rootPath, pathQueue);
-    std::thread collectorThread(collector);
+    std::thread collThread(collector);
 
     WordCounter counter(wordQueue);
     const WordCountList wordCounts = counter.count();
@@ -38,7 +36,7 @@ int main(int argc, char** argv) {
         std::cout << item.getCount() << " - " << item.getWord() << std::endl;
     }
 
-    workerThread.join();
-    collectorThread.join();
+    poolThread.join();
+    collThread.join();
     return 0;
 }
