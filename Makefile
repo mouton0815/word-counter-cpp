@@ -2,8 +2,8 @@ CXX = g++
 CXXFLAGS = -Wall -pthread
 LDFLAGS = -Wall -pthread
 
-objects = src/constants.o src/word-count-mapper.o src/word-counter.o
-test_objects = test/tests.o test/blocking-queue-test.o test/word-count-mapper-test.o test/word-counter-test.o
+objects = src/constants.o src/word-count-mapper.o src/word-counter.o src/worker.o
+test_objects = test/tests.o test/blocking-queue-test.o test/word-count-mapper-test.o test/word-counter-test.o test/file-reader-mock.o test/worker-test.o
 
 main: $(objects)
 	$(CXX) $(LDFLAGS) -o main.exe $(objects)

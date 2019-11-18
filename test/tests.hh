@@ -10,3 +10,6 @@ void testWordCountMapperUnicode();
 void testWordCounterEmpty();
 void testWordCounterSingle();
 void testWordCounterMultiple();
+
+void testWorkerEmpty();
+void testWorkerNormal();

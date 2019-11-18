@@ -12,7 +12,7 @@ void testBlockingQueueSimple() {
     const auto input = "Hello world";
     myQueue.push(input);
     const auto result = myQueue.pop();
-    assert(result.compare(input) == 0);
+    assert(result == input);
     std::cout << "ok " << __FUNCTION__ << std::endl;
 }
 

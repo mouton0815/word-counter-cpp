@@ -14,5 +14,8 @@ int main(int argc, char** argv) {
     testWordCounterSingle();
     testWordCounterMultiple();
 
+    testWorkerEmpty();
+    testWorkerNormal();
+
     return 0;
 }
