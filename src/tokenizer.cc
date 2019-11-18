@@ -13,12 +13,9 @@ Tokenizer::Tokenizer(StringQueue& wordQueue)
 }
 
 void Tokenizer::tokenize(const std::string& text) {
-    std::cout << "--t--> " << text << std::endl;
-
     std::smatch res;
     std::string::const_iterator searchStart(text.cbegin());
     while (std::regex_search(searchStart, text.cend(), res, m_pattern)) {
-        std::cout << "--l--> " << res[0] << std::endl;
         m_wordQueue.push(toLower(res[0]));
         searchStart = res.suffix().first;
     }

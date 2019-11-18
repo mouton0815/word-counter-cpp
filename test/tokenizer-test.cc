@@ -21,8 +21,8 @@ std::vector<std::string> tokenize(const std::string& text) {
 
 void tokenizeAndVerify(const std::string& text, std::initializer_list<std::string> refWords) {
     const auto words = tokenize(text);
-    for (const auto& x: words) std::cout << "-----> " << x << std::endl;
-    for (const auto& x: refWords) std::cout << "--~--> " << x << std::endl;
+    // for (const auto& x: words) std::cout << "-----> " << x << std::endl;
+    // for (const auto& x: refWords) std::cout << "--~--> " << x << std::endl;
     assert(std::equal(words.begin(), words.end(), refWords.begin(), refWords.end()));
 }
 
