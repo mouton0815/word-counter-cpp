@@ -7,6 +7,7 @@ objects = \
     src/word-count-mapper.o \
     src/word-counter.o \
     src/tokenizer.o \
+    src/path-collector.o \
     src/file-reader-impl.o \
     src/worker.o
 
@@ -19,6 +20,7 @@ test_objects = \
     test/word-count-mapper-test.o \
     test/tokenizer-test.o \
     test/word-counter-test.o \
+    test/path-collector-test.o \
     test/file-reader-test.o \
     test/worker-test.o
 
