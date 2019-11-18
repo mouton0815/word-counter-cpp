@@ -1,3 +1,26 @@
+TODO: Build *.exe on Windows, no suffix on Linux
+
+# Word Counter (C++ Version)
+Counts the number of occurrences of every word in all text files within a folder.
+
+Goals of this project were:
+* Refresh my C++ knowledge and get acquainted to C++ 11.
+* Compare with implementations of the same project in C++, [Go](https://github.com/mouton0815/word-counter-go),
+[Java](https://github.com/mouton0815/word-counter-java), Node, Python.
+
+The project consists of
+* A [path collector](src/path-collector.cc) that retrieves the path names of all `*.txt` files
+in a given folder and its subdirectories and passes them to a channel named `pathQueue`.
+* A [file reader](src/file-reader-impl.cc) that reads the files and passes the content text to
+a [tokenizer](src/tokenizer.cc), which splits the text into words and passes them to a channel name `wordQueue`.
+* A number of [workers](src/worker.cc) that receive path names from a `pathQueue` and hands
+them over to the file reader.
+* A [worker pool](src/worker-pool.cc) that spawns a worker for every available CPU and waits for their terminations.
+* A [word counter](src/word-counter.cc) that listens to `wordQueue` and counts the number of
+occurrences for every word.
+* A [main](src/main.cc) program that wires the classes, starts the path collector, the worker pool,
+and the word counter. Finally, it outputs the word lists ordered by decreasing number of occurrences. 
+
 Some observations:
 * With version 11, C++ became an even more complex beast than it had already been with older versions.
 There are lot's of new and mostly *good* features that make the code more concise and programs safer.
@@ -11,3 +34,25 @@ and added some unit tests.
 I was not able to make unicode-aware regular expressions working, so the C++ version splits
 correctly on ASCII texts only.
 I may do a later attempt using the [ICU library](http://site.icu-project.org/design/cpp).
+
+# Building
+```
+make
+```
+
+# Running
+```
+./main.exe <folder>
+```
+For example, count the words of all files in folder `./data` and write the results in file `wordcounts.txt`:
+```
+./main.exe ./data > wordcounts.txt
+```
+
+# Testing
+```
+make test && ./test.exe
+```
+
+# License
+MIT
