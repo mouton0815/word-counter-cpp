@@ -1,7 +1,6 @@
 #include <experimental/filesystem> // TODO: Upgrade to GCC 8 and remove "experimental" (+ make requirements clear in README.md)
 #include "constants.hh"
 #include "path-collector.hh"
-#include <iostream> // TODO: Remove
 
 namespace fs = std::experimental::filesystem;
 
