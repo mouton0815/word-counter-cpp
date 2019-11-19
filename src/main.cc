@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
         std::cerr << "Syntax: " << argv[0] << " <folder>" << std::endl;
         return -1;
     }
-    const auto rootPath = argv[1];
+    const std::string rootPath = argv[1];
 
     // Measure time including setup
     const auto startTime = Clock::now();
