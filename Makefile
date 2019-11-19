@@ -26,10 +26,10 @@ test_objects = \
     test/worker-test.o \
     test/worker-pool-test.o
 
-main: $(main_objects)
+main.exe: $(main_objects)
 	$(CXX) -o main.exe $(main_objects) $(LDFLAGS)
 
-test: $(test_objects) $(objects)
+test.exe: $(test_objects) $(objects)
 	$(CXX) -o test.exe $(test_objects) $(objects) $(LDFLAGS)
 
 $(main_objects): src/*.hh

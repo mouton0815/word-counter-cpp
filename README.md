@@ -1,5 +1,3 @@
-TODO: Build *.exe on Windows, no suffix on Linux
-
 # Word Counter (C++ Version)
 Counts the number of occurrences of every word in all text files within a folder.
 
