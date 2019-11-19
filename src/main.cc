@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
 
     // Reserve one core for current thread (the counter), and another one for the path collector
     const auto numWorkers = std::max(static_cast<int>(std::thread::hardware_concurrency()) - 2, 1);
-    std::cout << "#workers: " << numWorkers << std::endl;
+    std::cerr << "#workers: " << numWorkers << std::endl;
 
     StringQueue pathQueue;
     StringQueue wordQueue;

@@ -58,7 +58,7 @@ For example, count the words of all files in folder `./data` and write the resul
 
 # Testing
 ```
-make test && ./test.exe
+make test.exe && ./test.exe
 ```
 
 # License

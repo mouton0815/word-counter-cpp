@@ -7,14 +7,14 @@ Worker::Worker(const int id, StringQueue& pathQueue, FileReader& fileReader)
 }
 
 void Worker::operator()() {
-    std::cout << "Worker " << m_id << " starts" << std::endl;
+    std::cerr << "Worker " << m_id << " starts" << std::endl;
     std::string path;
     while ((path = m_pathQueue.pop()) != STREAM_END) {
-        std::cout << "Worker " << m_id << " reads "  << path << std::endl;
+        std::cerr << "Worker " << m_id << " reads "  << path << std::endl;
         m_fileReader.read(path);
     }
     // Inform other workers that pathQueue is empty
     m_pathQueue.push(STREAM_END);
-    std::cout << "Worker " << m_id << " leaves" << std::endl;
+    std::cerr << "Worker " << m_id << " leaves" << std::endl;
 }
 
