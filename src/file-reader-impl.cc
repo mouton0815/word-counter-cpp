@@ -9,7 +9,10 @@ FileReaderImpl::FileReaderImpl(Tokenizer& tokenizer)
 
 void FileReaderImpl::read(const std::string& path) {
     std::string line;
-    std::ifstream file(path); // TODO: Apparently this fails silently if <path> does not exist. Need to print a warning.
+    std::ifstream file(path);
+    if (!file) {
+        throw std::ios::failure("Error opening file " + path);
+    }
     while (std::getline(file, line)) {
         m_tokenizer.tokenize(line);
     }

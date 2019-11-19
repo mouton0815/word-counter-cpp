@@ -26,7 +26,8 @@ int main(int argc, char** argv) {
 
     testPathCollector();
 
-    testFileReader();
+    testFileReaderSuccess();
+    testFileReaderNotFound();
 
     testWorkerEmpty();
     testWorkerNormal();

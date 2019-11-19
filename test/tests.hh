@@ -23,7 +23,8 @@ void testTokenizerIgnoreNumbers();
 
 void testPathCollector();
 
-void testFileReader();
+void testFileReaderSuccess();
+void testFileReaderNotFound();
 
 void testWorkerEmpty();
 void testWorkerNormal();

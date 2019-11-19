@@ -8,7 +8,7 @@
 #include "../src/string-queue.hh"
 #include "tests.hh"
 
-void testFileReader() {
+void testFileReaderSuccess() {
     StringQueue queue;
     Tokenizer tokenizer(queue);
     FileReaderImpl reader(tokenizer);
@@ -25,4 +25,17 @@ void testFileReader() {
     assert(*list.begin() == "lorem");
     assert(*list.rbegin() == "amet");
     std::cout << "ok " << __FUNCTION__ << std::endl;
+}
+
+void testFileReaderNotFound() {
+    StringQueue queue;
+    Tokenizer tokenizer(queue);
+    FileReaderImpl reader(tokenizer);
+    try {
+        reader.read("./does/not.exist");
+        assert(false);
+    }
+    catch (const std::ios::failure& e) {
+        std::cout << "ok " << __FUNCTION__ << std::endl;
+    }
 }
