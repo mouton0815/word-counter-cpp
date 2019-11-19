@@ -1,4 +1,5 @@
 #include <algorithm> // std::max
+#include <chrono>
 #include <iostream>
 #include <map>
 #include <thread>
@@ -11,7 +12,8 @@
 #include "word-counter.hh"
 #include "worker-pool.hh"
 
-using namespace std;
+typedef std::chrono::high_resolution_clock Clock;
+typedef std::chrono::duration<float> Duration;
 
 int main(int argc, char** argv) {
     if (argc != 2) {
@@ -19,6 +21,9 @@ int main(int argc, char** argv) {
         return -1;
     }
     const auto rootPath = argv[1];
+
+    // Measure time including setup
+    const auto startTime = Clock::now();
 
     // Reserve one core for current thread (the counter), and another one for the path collector
     const auto numWorkers = std::max(static_cast<int>(std::thread::hardware_concurrency()) - 2, 1);
@@ -43,5 +48,8 @@ int main(int argc, char** argv) {
 
     poolThread.join();
     collThread.join();
+
+    const Duration elapsed = Clock::now() - startTime;
+    std::cerr << "Elapsed time: " << elapsed.count() << " seconds"<< std::endl;
     return 0;
 }
