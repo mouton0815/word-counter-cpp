@@ -4,7 +4,7 @@ Counts the number of occurrences of every word in all text files within a folder
 Goals of this project were:
 * Refresh my C++ knowledge and get acquainted to C++ 11.
 * Compare with implementations of the same project in C++, [Go](https://github.com/mouton0815/word-counter-go),
-[Java](https://github.com/mouton0815/word-counter-java), Node, Python.
+[Java](https://github.com/mouton0815/word-counter-java), Node, Python, Rust.
 
 The project consists of
 * A [path collector](src/path-collector.cc) that retrieves the path names of all `*.txt` files
@@ -36,6 +36,9 @@ I may do a later attempt using the [ICU library](http://site.icu-project.org/des
 which supports C++ 17, but _not_ `<filesystem>`. To use it, one has to include `<experimental/filesystem>`
 and link with `-lstdc++fs`. But then class `directory_entry` does not support the standard method
 `is_regular_file()` ... aargh.
+* Last but not least, the C++ variant is more than 3 times _slower_ than the Java variant, and nearly
+5 times slower than the Go variant. Of course this smells like serious programming mistakes, but it
+also shows that writing performant C++ programs is not trivial. 
 
 # Building
 The project has been developed on Ubuntu 18.04.1 LTS with GCC 7.4.0. It uses C++ 11 features
