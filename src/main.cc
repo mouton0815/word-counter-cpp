@@ -1,3 +1,4 @@
+#include <algorithm> // std::max
 #include <iostream>
 #include <map>
 #include <thread>
@@ -19,8 +20,8 @@ int main(int argc, char** argv) {
     }
     const auto rootPath = argv[1];
 
-    // TODO: Auto-detect number of workers
-    const auto numWorkers = 4;
+    // Reserve one core for current thread (the counter), and another one for the path collector
+    const auto numWorkers = std::max(static_cast<int>(std::thread::hardware_concurrency()) - 2, 1);
     std::cout << "#workers: " << numWorkers << std::endl;
 
     StringQueue pathQueue;
