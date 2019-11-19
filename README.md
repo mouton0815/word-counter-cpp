@@ -40,6 +40,11 @@ and link with `-lstdc++fs`. But then class `directory_entry` does not support th
 `is_regular_file()` ... aargh.
 
 # Building
+The project has been developed on Ubuntu 18.04.1 LTS with GCC 7.4.0. It uses C++ 11 features
+and the C++ 17 `<experimental/filesystem>` header. The project does not compile with older
+compilers that do not support C++ 11/17. It might also not compile with GCC 8, which provides
+a non-experimental `<filesystem>` header. The project does _not_ compile with MinGW due to its
+lack of locales support. 
 ```
 make
 ```
