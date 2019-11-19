@@ -13,7 +13,11 @@
 using namespace std;
 
 int main(int argc, char** argv) {
-    const auto rootPath = "./data"; // TODO: Take from command line
+    if (argc != 2) {
+        std::cerr << "Syntax: " << argv[0] << " <folder>" << std::endl;
+        return -1;
+    }
+    const auto rootPath = argv[1];
 
     // TODO: Auto-detect number of workers
     const auto numWorkers = 4;
