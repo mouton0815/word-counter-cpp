@@ -3,23 +3,21 @@
 #include <iostream>
 #include "../src/constants.hh"
 #include "../src/path-collector.hh"
-#include "../src/string-queue.hh"
+#include "../src/path-queue.hh"
 #include "tests.hh"
 
 void testPathCollector() {
-    StringQueue queue;
+    PathQueue queue;
     PathCollector("./data", queue)();
 
-    std::string path;
-    std::vector<std::string> list;
+    Path path;
+    std::vector<Path> list;
     while ((path = queue.pop()) != STREAM_END) {
         list.push_back(path);
     }
     std::sort(list.begin(), list.end());
 
-    const auto refList = { "./data/file1.txt", "./data/file2.txt", "./data/subdir/file3.txt" };
-    // for (const auto& x: list) std::cout << "-----> " << x << std::endl;
-    // for (const auto& x: refList) std::cout << "--~--> " << x << std::endl;
+    const auto refList = { Path("./data/file1.txt"), Path("./data/file2.txt"), Path("./data/subdir/file3.txt") };
     assert(std::equal(list.begin(), list.end(), refList.begin(), refList.end()));
     std::cout << "ok " << __FUNCTION__ << std::endl;
 }

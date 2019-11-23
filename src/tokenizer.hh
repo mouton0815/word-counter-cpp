@@ -6,7 +6,7 @@
 class Tokenizer {
 private:
     StringQueue& m_wordQueue;
-    std::regex m_pattern;
+    std::regex   m_pattern;
 public:
     Tokenizer(StringQueue& wordQueue);
     void tokenize(const std::string& text);

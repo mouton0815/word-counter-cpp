@@ -5,8 +5,6 @@
 
 void mapAndVerify(const WordCountMap& map, const WordCountList& refList) {
     const auto list = WordCountMapper()(map);
-    // for (const auto& x: list) std::cout << "-----> " << x.getWord() << " -- " << x.getCount() << std::endl;
-    // for (const auto& x: refList) std::cout << "--~--> " << x.getWord() << " -- " << x.getCount() << std::endl;
     assert(std::equal(list.begin(), list.end(), refList.begin(), refList.end()));
 }
 

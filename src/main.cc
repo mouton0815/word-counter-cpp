@@ -8,6 +8,7 @@
 #include "tokenizer.hh"
 #include "path-collector.hh"
 #include "file-reader-impl.hh"
+#include "path-queue.hh"
 #include "string-queue.hh"
 #include "word-counter.hh"
 #include "worker-pool.hh"
@@ -20,7 +21,7 @@ int main(int argc, char** argv) {
         std::cerr << "Syntax: " << argv[0] << " <folder>" << std::endl;
         return -1;
     }
-    const std::string rootPath = argv[1];
+    const auto rootPath = Path(argv[1]);
 
     // Measure time including setup
     const auto startTime = Clock::now();
@@ -29,7 +30,7 @@ int main(int argc, char** argv) {
     const auto numWorkers = std::max(static_cast<int>(std::thread::hardware_concurrency()) - 2, 1);
     std::cerr << "#workers: " << numWorkers << std::endl;
 
-    StringQueue pathQueue;
+    PathQueue pathQueue;
     StringQueue wordQueue;
 
     Tokenizer tokenizer(wordQueue);

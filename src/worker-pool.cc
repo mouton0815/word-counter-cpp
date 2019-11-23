@@ -3,7 +3,7 @@
 #include "worker.hh"
 #include "worker-pool.hh"
 
-WorkerPool::WorkerPool(const int numWorkers, StringQueue& pathQueue, FileReader& fileReader)
+WorkerPool::WorkerPool(const int numWorkers, PathQueue& pathQueue, FileReader& fileReader)
     : m_numWorkers(numWorkers), m_pathQueue(pathQueue), m_fileReader(fileReader) {
 }
 

@@ -1,13 +1,12 @@
 #pragma once
 #include <string>
-#include "string-queue.hh"
+#include "path-queue.hh"
 
 class PathCollector {
 private:
-    const std::string& m_rootPath;
-    StringQueue&       m_pathQueue;
+    const Path& m_rootPath;
+    PathQueue&  m_pathQueue;
 public:
-    // TODO: Use fs::path instead of std::string!
-    PathCollector(const std::string& rootPath, StringQueue& pathQueue);
+    PathCollector(const Path& rootPath, PathQueue& pathQueue);
     void operator()();
 };

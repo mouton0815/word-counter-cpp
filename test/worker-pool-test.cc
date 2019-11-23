@@ -6,21 +6,22 @@
 #include <string>
 #include <vector>
 #include "../src/constants.hh"
+#include "../src/path-queue.hh"
 #include "../src/worker-pool.hh"
 #include "file-reader-mock.hh"
 #include "tests.hh"
 
-std::string toString(const int i) {
+std::string toPath(const int i) {
     std::stringstream s;
     s << std::setw(2) << std::setfill('0') << i;
-    return s.str();
+    return Path(s.str());
 }
 
 void runWorkerPoolAndVerify(const int pathCount) {
-    StringQueue pathQueue;
-    std::vector<std::string> refList;
+    PathQueue pathQueue;
+    std::vector<Path> refList;
     for (int i = 0; i < pathCount; i++) {
-        const auto path = toString(i);
+        const auto path = toPath(i);
         refList.push_back(path);
         pathQueue.push(path);
     }
@@ -31,8 +32,6 @@ void runWorkerPoolAndVerify(const int pathCount) {
 
     auto list = fileReader.get();
     std::sort(list.begin(), list.end());
-    // for (const auto& x: list) std::cout << "-----> " << x << std::endl;
-    // for (const auto& x: refList) std::cout << "--~--> " << x << std::endl;
     assert(std::equal(list.begin(), list.end(), refList.begin(), refList.end()));
 }
 

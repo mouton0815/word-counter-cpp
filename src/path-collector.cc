@@ -2,7 +2,7 @@
 #include "constants.hh"
 #include "path-collector.hh"
 
-namespace fs = std::experimental::filesystem;
+typedef std::experimental::filesystem::recursive_directory_iterator PathIterator;
 
 // It is awful that the C++ standard library does not have this function...
 bool hasSuffix(const std::string& text, const std::string& suffix) {
@@ -12,18 +12,17 @@ bool hasSuffix(const std::string& text, const std::string& suffix) {
     return text.compare(text.length() - suffix.length(), suffix.length(), suffix) == 0;
 }
 
-PathCollector::PathCollector(const std::string& rootPath, StringQueue& pathQueue)
+PathCollector::PathCollector(const Path& rootPath, PathQueue& pathQueue)
     : m_rootPath(rootPath), m_pathQueue(pathQueue) {
 }
 
 void PathCollector::operator()() {
-    const fs::path rootPath(m_rootPath);
-    for(auto iter = fs::recursive_directory_iterator(rootPath); iter != fs::recursive_directory_iterator(); ++iter) {
+    for(auto iter = PathIterator(m_rootPath); iter != PathIterator(); ++iter) {
         // TODO: Check for iter->is_regular_file(), which is not supported by the experimental fs implementation
         const auto filename = iter->path();
         if (hasSuffix(filename, ".txt")) {
             m_pathQueue.push(filename);
         }
     }
-    m_pathQueue.push(STREAM_END);
+    m_pathQueue.push(Path(STREAM_END));
 }
