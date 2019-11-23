@@ -1,6 +1,6 @@
 CXX = g++
-CXXFLAGS = -Wall -pthread
-LDFLAGS = -Wall -pthread -lstdc++fs
+CXXFLAGS = -Wall -pthread -std=c++17
+LDFLAGS = -Wall -pthread
 
 objects = \
     src/constants.o \

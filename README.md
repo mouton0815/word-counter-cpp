@@ -41,11 +41,10 @@ and link with `-lstdc++fs`. But then class `directory_entry` does not support th
 also shows that writing performant C++ programs is not trivial. 
 
 # Building
-The project has been developed on Ubuntu 18.04.1 LTS with GCC 7.4.0. It uses C++ 11 features
-and the C++ 17 `<experimental/filesystem>` header. The project does not compile with older
-compilers that do not support C++ 11/17. It might also not compile with GCC 8, which provides
-a non-experimental `<filesystem>` header. The project does _not_ compile with MinGW due to its
-lack of locales support. 
+The project has been developed on Ubuntu 18.04.1 LTS with GCC 9.2.1. It uses many C++ 11 features
+and the C++ 17 `<filesystem>` package. The project may compile with GCC 8.x, but _not_ with
+GCC 7.x, because GCCC 7 one only supports an `<experimental/filesystem>` implementation.
+The project does _not_ compile with MinGW due to its lack of locales support. 
 ```
 make
 ```
